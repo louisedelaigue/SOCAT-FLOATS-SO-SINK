@@ -1,2 +1,0 @@
-# SOCAT-FLOATS-SO-SINK
-
