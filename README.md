@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1011757416.svg)](https://doi.org/10.5281/zenodo.18935338)
+
 ## The Southern Ocean CO<sub>2</sub> sink in an evolving observing system
 
 #### **L. Delaigue<sup>1</sup>\, P. Landschützer<sup>2</sup>, C. Wimart-Rousseau<sup>3</sup>, L. A., Arbilla<sup>4, 5, 6</sup>, J-B, Sallée<sup>4</sup>, S. Bushinsky<sup>7</sup>,  H. Claustre<sup>1</sup>, and R. Sauzède<sup>8</sup>**
