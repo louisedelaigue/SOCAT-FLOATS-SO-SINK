@@ -16,7 +16,7 @@ import hdbscan
 RANDOM_STATE = 42
 BASE_PATH = "/remote/unity/bgc-output/DELAIGUE/SOCAT-FLOATS-OSSE/MODEL_FLOATS_v2/processing_steps/"
 DATA_PATH = BASE_PATH + "BGC-Argo_SO_feature_engineered_monthly_1deg.csv"
-OUTPUT_PATH = BASE_PATH
+OUTPUT_PATH = "/remote/unity/bgc-output/DELAIGUE/SOCAT-FLOATS-OSSE/MODEL_FLOATS_SUMMER_ONLY_v2/processing_steps/"
 
 # Name prefix for output files
 VAR_MLP = "FLOATS_pco2"  # avoids confusion with SOCAT runs
