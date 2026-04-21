@@ -1,4 +1,4 @@
-[![DOI]([https://zenodo.org/badge/DOI/10.5281/zenodo.15790561.svg)](https://doi.org/10.5281/zenodo.15790561](https://doi.org/10.5281/zenodo.18935339))
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15790561.svg)](https://doi.org/10.5281/zenodo.18935339)
 
 ## The Southern Ocean CO<sub>2</sub> sink in an evolving observing system
 
