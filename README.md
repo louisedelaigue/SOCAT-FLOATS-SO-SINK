@@ -1,8 +1,8 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15790561.svg)](https://doi.org/10.5281/zenodo.18935339)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18935339.svg)](https://zenodo.org/doi/10.5281/zenodo.18935339)
 
 ## The Southern Ocean CO<sub>2</sub> sink in an evolving observing system
 
-#### **Louise Delaigue<sup>1</sup>\,  Peter Landschützer<sup>2</sup>, Cathy Wimart-Rousseau<sup>3</sup>, Lisandro A. Arbilla<sup>4,5,6</sup>, Jean-Baptiste Sallée<sup>4</sup>, Seth Bushinsky<sup>7</sup>, H. Claustre<sup>1</sup> and Raphaëlle Sauzède<sup>8</sup>
+#### **Louise Delaigue<sup>1</sup>\,  Peter Landschützer<sup>2</sup>, Cathy Wimart-Rousseau<sup>3</sup>, Lisandro A. Arbilla<sup>4,5,6</sup>, Jean-Baptiste Sallée<sup>4</sup>, Seth Bushinsky<sup>7</sup>, H. Claustre<sup>1</sup> and Raphaëlle Sauzède<sup>8</sup>**
 
 <details>
 <summary><strong>Author Affiliations</strong></summary>
