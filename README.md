@@ -1,40 +1,89 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18935339.svg)](https://zenodo.org/doi/10.5281/zenodo.18935339)
+# The Southern Ocean CO<sub>2</sub> sink in an evolving observing system
 
-## The Southern Ocean CO<sub>2</sub> sink in an evolving observing system
-
-#### **Louise Delaigue<sup>1</sup>\,  Peter Landschützer<sup>2</sup>, Cathy Wimart-Rousseau<sup>3</sup>, Lisandro A. Arbilla<sup>4,5,6</sup>, Jean-Baptiste Sallée<sup>4</sup>, Seth Bushinsky<sup>7</sup>, H. Claustre<sup>1</sup> and Raphaëlle Sauzède<sup>8</sup>**
+Louise Delaigue¹, Peter Landschützer², Cathy Wimart-Rousseau³, Lisandro A. Arbilla⁴˒⁵˒⁶, Jean-Baptiste Sallée⁴, Seth Bushinsky⁷, Hervé Claustre¹ and Raphaëlle Sauzède⁸
 
 <details>
-<summary><strong>Author Affiliations</strong></summary>
+<summary>Author affiliations</summary>
 
-<sup>1</sup>Sorbonne Université, CNRS, Laboratoire d’Océanographie de Villefranche, Villefranche-Sur-Mer, France
-<sup>2</sup>Flanders Marine Institute (VLIZ), Jacobsenstraat 1, 8400 Ostend, Belgium
-<sup>3</sup>National Oceanography Centre Southampton, European Way, Southampton, SO14 3ZH, UK
-<sup>4</sup>LOCEAN, Sorbonne Université, CNRS, IRD, MNHN, Laboratoire d'Océanographie et du Climat: Expérimentations et Approches Numériques, LOCEAN/IPSL, 75005 Paris, France
-<sup>5</sup>Instituto Argentino de Oceanografía (IADO, CONICET-UNS), Bahía Blanca, Argentina
-<sup>6</sup>Departamento de Geografía y Turismo, Universidad Nacional del Sur (UNS), Bahía Blanca, Argentina
-<sup>7</sup>Department of Oceanography, SOEST, University of Hawai'i at Manoa, Honolulu, HI, USA
-<sup>6</sup>Sorbonne Université, CNRS, Institut de la Mer de Villefranche, Villefranche-Sur-Mer, France 
+1. Sorbonne Université, CNRS, Laboratoire d'Océanographie de Villefranche, Villefranche-sur-Mer, France
+2. Flanders Marine Institute (VLIZ), Ostend, Belgium
+3. National Oceanography Centre, Southampton, UK
+4. LOCEAN, Sorbonne Université, CNRS, IRD, MNHN, LOCEAN/IPSL, Paris, France
+5. Instituto Argentino de Oceanografía (IADO, CONICET-UNS), Bahía Blanca, Argentina
+6. Departamento de Geografía y Turismo, Universidad Nacional del Sur (UNS), Bahía Blanca, Argentina
+7. Department of Oceanography, SOEST, University of Hawai'i at Mānoa, Honolulu, HI, USA
+8. Sorbonne Université, CNRS, Institut de la Mer de Villefranche, Villefranche-sur-Mer, France
 
 </details>
 
-*Corresponding author: Louise Delaigue ([louise.delaigue@imev-mer.fr](mailto:louise.delaigue@imev-mer.fr))*
+Corresponding author: Louise Delaigue ([louise.delaigue@imev-mer.fr](mailto:louise.delaigue@imev-mer.fr))
 
-> [!IMPORTANT]  
-> This study is currently under review for publication in Global Biogeochemical Cycles.
+> [!IMPORTANT]
+> This study is currently under review for publication in *Global Biogeochemical Cycles*.
 
-<img src="figs/Fig5.png" width="600" height="400" />
+## Abstract
 
-### Abstract
-The Southern Ocean is a major sink for atmospheric CO<sub>2</sub>, yet the magnitude and trend of this sink remain uncertain due to sparse and seasonally biased observations. Reconstructions based on the Surface Ocean CO<sub>2</sub> Atlas (SOCAT) indicate a strengthening of this sink since the early 2000s, but such signals may reflect evolving observational coverage rather than basin-scale change. Here, we combine SOCAT with partial pressure of CO<sub>2</sub> (pCO<sub>2</sub>) estimates from BioGeoChemical (BGC-) Argo floats to assess how expanded autonomous sampling alters estimates of Southern Ocean air–sea CO<sub>2</sub> exchange. Using feedforward multilayer perceptron (MLP) models trained on (i) SOCAT-only, (ii) BGC-Argo-only, and (iii) merged, uncertainty-weighted SOCAT + BGC-Argo data, we compute monthly air–sea CO<sub>2</sub> fluxes south of 30°S for 2003-2024. Ship-only observations imply a strong intensification of the CO2 sink, but this signal disappears once floats are included, yielding a combined reconstruction with a near-zero long-term trend that is not statistically significant. The uncertainty-weighted combined reconstruction yields a mean Southern Ocean CO2 uptake of −1.32 ± 0.10 Pg C yr<sup>-1</sup> over this period and is consistent with atmospheric inversion and global ocean biogeochemical model estimates from the Global Carbon Budget. Correcting for sampling biases using BGC-Argo floats reduces the inferred basin-scale sink by 12%, consistent with observing system simulation experiments, while limiting reported systematic biases in float-derived pCO<sub>2</sub> by anchoring autonomous observations to ship-based measurements. Integrating complementary observation streams provides a physically interpretable benchmark for Southern Ocean CO<sub>2</sub> uptake and illustrates how treatment of sampling biases can reconcile ship- and float-derived constraints.
+The Southern Ocean is a major sink for atmospheric CO<sub>2</sub>, yet the magnitude and trend of this sink remain uncertain due to sparse and seasonally biased observations. Reconstructions based on the Surface Ocean CO<sub>2</sub> Atlas (SOCAT) indicate a strengthening of this sink since the early 2000s, but such signals may reflect evolving observational coverage rather than basin-scale change. Here, we combine SOCAT with partial pressure of CO<sub>2</sub> (*p*CO<sub>2</sub>) estimates from Biogeochemical (BGC-) Argo floats to assess how expanded autonomous sampling alters estimates of Southern Ocean air–sea CO<sub>2</sub> exchange. Using feedforward multilayer perceptron models trained on SOCAT-only, BGC-Argo-only, and a merged, uncertainty-weighted combination, we compute monthly air–sea CO<sub>2</sub> fluxes south of 30°S for 2004–2024. Ship-only observations imply a strong intensification of the CO<sub>2</sub> sink, but this signal disappears once floats are included, yielding a combined reconstruction with a near-zero, non-significant long-term trend. The uncertainty-weighted combined reconstruction yields a mean Southern Ocean CO<sub>2</sub> uptake of −1.20 ± 0.13 Pg C yr<sup>−1</sup> over this period, ~0.2 Pg C yr<sup>−1</sup> weaker than the *f*CO<sub>2</sub>-based Global Carbon Budget ensemble mean, as expected from the summer-biased ship sampling. This estimate lies within the spread of atmospheric inversion and global ocean biogeochemical models, while limiting reported systematic biases in float-derived *p*CO<sub>2</sub> by anchoring autonomous observations to ship-based measurements. Integrating complementary observation streams provides a benchmark for Southern Ocean CO<sub>2</sub> uptake whose differences from other products can be interpreted in terms of known physical and biogeochemical processes, illustrating how treatment of sampling biases can reconcile ship- and float-derived constraints.
 
- 
-### Analysis and plotting
-This repository contains the raw data and scripts used to generate the results presented in the manuscript. 
+<p align="center">
+  <img src="figs/Figure5.png" alt="Figure 5" width="600">
+</p>
 
-> [!NOTE]  
-> This repository does not include data files due to the large file sizes. However, all these files can be made available upon request.
+**Figure 5.** Southern Ocean CO<sub>2</sub> flux south of 30°S for 2004–2024, from reconstruction-based and independent reference estimates: the SOCAT, BGC-Argo floats, and combined reconstructions (dashed), Global Carbon Budget 2025 (GCB25; Friedlingstein et al., 2026) *f*CO<sub>2</sub>-based ensemble mean (turquoise), GOBMs (Sim A; black), and atmospheric inversion ensembles (purple). Shaded regions indicate ±1σ uncertainty for each annual flux estimate. Negative values indicate net ocean CO<sub>2</sub> uptake; all fluxes are annual means in Pg C yr<sup>−1</sup>.
 
-### License
-This project is licensed under the GNU General Public License v3.0 – see the LICENSE file for details.
+## Repository contents
 
+This repository contains the scripts and notebooks used to process the data, train the multilayer perceptron (MLP) reconstructions, generate predictions, compute air–sea CO<sub>2</sub> fluxes, and produce all figures and tables in the manuscript and Supplementary Material.
+
+| Folder / file | Contents |
+|---|---|
+| `MODEL_SOCAT_ONLY_OBS_v2/` | SOCAT-only pipeline: preprocessing, data split, architecture search, Monte Carlo ensemble, independent validation |
+| `MODEL_FLOATS_v2/` | BGC-Argo float-only pipeline (same structure) |
+| `MODEL_FLOATS_SUMMER_ONLY_v2/` | Summer-only float sensitivity experiment (Fig. S16) |
+| `MODEL_SOCAT_AND_FLOATS_v2/` | Combined, uncertainty-weighted SOCAT + BGC-Argo pipeline |
+| `PREDICTION_MATRIX_v2/` | Construction of the gridded predictor dataset (1° × 1°, monthly, south of 30°S) and ensemble *p*CO<sub>2</sub> predictions |
+| `Figure1.ipynb` | Fig. 1 |
+| `Figures3_4_5_6_7_Table2_Table3_documented_si10.ipynb` | Flux calculation, Figs. 3–7, Tables 1–2 and Tables S2–S4 |
+| `FigureS10.ipynb`, `Supp_figure_*.ipynb` | Supplementary figures |
+| `figs/` | Output figures |
+
+## Data availability
+
+> [!NOTE]
+> Input datasets and large intermediate files (gridded predictor fields, training tables and *p*CO<sub>2</sub> prediction datasets, several GB in total) are **not included in this repository** because of GitHub file-size limits. All input datasets are open access and can be downloaded from the sources listed below. The processed intermediate files and the final reconstructed *p*CO<sub>2</sub> and flux products are available from the corresponding author upon request.
+
+### Observations
+
+| Dataset | Source |
+|---|---|
+| Surface Ocean CO<sub>2</sub> Atlas, version 2025 (SOCATv2025), Southern Ocean regional synthesis file | Bakker et al. (2016, 2025); [socat.info](https://socat.info) |
+| BGC-Argo float carbonate-system estimates (CANYON-B / CONTENT) | Copernicus Marine Service, `MULTIOBS_GLO_BGC_NUTRIENTS_CARBON_PROFILES_MYNRT_015_009`; [marine.copernicus.eu](https://marine.copernicus.eu) |
+
+BGC-Argo data were collected and made freely available by the International Argo Program and the national programs that contribute to it ([argo.ucsd.edu](https://argo.ucsd.edu), [ocean-ops.org](https://www.ocean-ops.org)).
+
+### Predictor fields
+
+| Variable | Source |
+|---|---|
+| Temperature, salinity, mixed layer depth | ARMOR3D, Copernicus Marine Service, `MULTIOBS_GLO_PHY_TSUV_3D_MYNRT_015_012` |
+| Sea level anomaly | DUACS, Copernicus Marine Service, `SEALEVEL_GLO_PHY_L4_MY_008_047` |
+| Remote sensing reflectance | Copernicus Marine Service, `OCEANCOLOUR_GLO_BGC_L3_MY_009_103` |
+| Photosynthetically available radiation | GlobColour, [hermes.acri.fr](https://hermes.acri.fr) |
+| 10 m winds (*u*<sub>10</sub>, *v*<sub>10</sub>, si10) and mean sea-level pressure | ERA5 monthly averaged data on single levels, Copernicus Climate Data Store ([doi:10.24381/cds.f17050d7](https://doi.org/10.24381/cds.f17050d7)) |
+| Atmospheric *x*CO<sub>2</sub> | Cape Grim Baseline Air Pollution Station (CSIRO / Australian Bureau of Meteorology) |
+| Bathymetry | GEBCO 2024 Grid ([doi:10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f](https://doi.org/10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f)) |
+
+### Flux calculation and benchmarks
+
+| Dataset | Source |
+|---|---|
+| Global Carbon Budget 2025 *f*CO<sub>2</sub> products, GOBMs and atmospheric inversions | Friedlingstein et al. (2026); [globalcarbonbudget.org](https://globalcarbonbudget.org) |
+| Ocean area south of 30°S | GOAS v1 polygon dataset, Flanders Marine Institute (2021); [marineregions.org](https://www.marineregions.org) |
+| Sea ice concentration climatology (1991–2020) | Danish Meteorological Institute from OSI SAF data; [ocean.dmi.dk](https://ocean.dmi.dk/arctic/) |
+| Polar Front position | Park & Durand (2019), SEANOE ([doi:10.17882/59800](https://doi.org/10.17882/59800)) |
+
+To rerun the pipelines, download the datasets above into a `data/` folder at the repository root. The expected file paths are set at the top of each script.
+
+## License
+
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
