@@ -1,4 +1,4 @@
-# The Southern Ocean CO2 sink in an evolving observing system
+# The Southern Ocean CO<sub>2</sub> sink in an evolving observing system
 
 Louise Delaigue¹, Peter Landschützer², Cathy Wimart-Rousseau³, Lisandro A. Arbilla⁴˒⁵˒⁶, Jean-Baptiste Sallée⁴, Seth Bushinsky⁷, Hervé Claustre¹ and Raphaëlle Sauzède⁸
 
