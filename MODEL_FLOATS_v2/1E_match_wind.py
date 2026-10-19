@@ -1,0 +1,149 @@
+# ===============================================================
+# FLOATS–MLD–SLA–RRS–PAR–ERA5 Wind (Full Dataset, 1° Grid)
+# Louise Delaigue – 2025
+# ===============================================================
+
+"""
+Merges ERA5 10 m wind fields (u10, v10, wind_speed)
+onto the 1°×1° monthly FLOATS–MLD–SLA–RRS–PAR grid.
+
+Pipeline consistency (current):
+ - Grid centers at ±0.5° (floor + 0.5)
+ - Southern Ocean = 30°S and south (lat_center <= -30.5)
+ - Monthly timestamps = month-start (YYYY-MM-01)
+ - Spatial aggregation per cell = median (after monthly mean from ERA5)
+"""
+
+import os
+import warnings
+import pandas as pd
+import numpy as np
+import xarray as xr
+
+warnings.filterwarnings("ignore")
+
+# === Paths ===
+floats_par_path = (
+    "/remote/unity/bgc-output/DELAIGUE/SOCAT-FLOATS-OSSE/MODEL_FLOATS_v2/processing_steps/"
+    "BGC-Argo_SO_clean_MLD_monthly_regridded_SLA_RRS_PAR.csv"
+)
+
+wind_nc_path = (
+    "/remote/unity/bgc-output/DELAIGUE/SOCAT-FLOATS-OSSE/data/wind/37f05a757edface13840bd98a5e1143b.nc"
+)
+
+output_path = (
+    "/remote/unity/bgc-output/DELAIGUE/SOCAT-FLOATS-OSSE/MODEL_FLOATS_v2/processing_steps/"
+    "BGC-Argo_SO_clean_MLD_monthly_regridded_SLA_RRS_PAR_WIND.csv"
+)
+
+# === Parameters ===
+lat_min, lat_max = -90, -30
+grid_center_offset = 0.5
+lat_center_max = -30.5
+
+# ===============================================================
+# 1. Load FLOATS–MLD–SLA–RRS–PAR grid
+# ===============================================================
+print("Loading FLOATS–MLD–SLA–RRS–PAR dataset...")
+df_all = pd.read_csv(floats_par_path)
+
+df_all["month_center"] = pd.to_datetime(df_all["month_center"], errors="coerce")
+df_all.dropna(subset=["month_center", "lat_center", "lon_center"], inplace=True)
+
+# Normalize to month START
+df_all["month_center"] = df_all["month_center"].dt.to_period("M").dt.to_timestamp(how="start")
+
+# Enforce Southern Ocean on centers
+df_all = df_all[(df_all["lat_center"] >= lat_min) & (df_all["lat_center"] <= lat_max)]
+df_all = df_all[df_all["lat_center"] <= lat_center_max]
+
+print(f"Loaded {len(df_all):,} FLOATS grid rows")
+
+# ===============================================================
+# 2. Load ERA5 dataset
+# ===============================================================
+print(f"\nLoading ERA5 wind dataset:\n{wind_nc_path}")
+ds = xr.open_dataset(wind_nc_path)
+
+# Fix coordinate names
+if "valid_time" in ds.coords and "time" not in ds.coords:
+    ds = ds.rename({"valid_time": "time"})
+if "lat" in ds.coords:
+    ds = ds.rename({"lat": "latitude"})
+if "lon" in ds.coords:
+    ds = ds.rename({"lon": "longitude"})
+
+# Fix longitude to [-180, 180]
+if float(ds.longitude.max()) > 180:
+    ds = ds.assign_coords(longitude=((ds.longitude + 180) % 360) - 180)
+
+ds = ds.sortby("latitude")
+
+# ===============================================================
+# 3. Compute wind_speed and regrid to monthly 1° grid
+# ===============================================================
+print("Computing monthly wind fields & snapping to 1°×1° grid...")
+
+# Monthly mean with month-start labels
+ds_monthly = ds.resample(time="MS").mean(skipna=True)
+
+# Convert to DataFrame
+df_wind = ds_monthly[["u10", "v10"]].to_dataframe().reset_index()
+
+# Wind speed
+df_wind["wind_speed"] = np.sqrt(df_wind["u10"] ** 2 + df_wind["v10"] ** 2)
+df_wind.dropna(subset=["wind_speed"], inplace=True)
+
+# Snap coordinates to 1° grid centers at ±0.5°
+df_wind["lat_center"] = np.floor(df_wind["latitude"]) + grid_center_offset
+df_wind["lon_center"] = np.floor(df_wind["longitude"]) + grid_center_offset
+
+# Enforce 30S+ on snapped centers
+df_wind = df_wind[df_wind["lat_center"] <= lat_center_max]
+
+# Median per cell-month (across ERA5 native points inside each 1° cell)
+df_wind = (
+    df_wind.groupby(["time", "lat_center", "lon_center"], as_index=False)
+    .median(numeric_only=True)
+    .rename(columns={"time": "month_center"})
+)
+
+# Normalize to month START
+df_wind["month_center"] = pd.to_datetime(df_wind["month_center"]).dt.to_period("M").dt.to_timestamp(how="start")
+
+print(f"Regridded ERA5 records: {len(df_wind):,}")
+
+# ===============================================================
+# 4. Merge with FLOATS grid
+# ===============================================================
+print("Merging ERA5 with FLOATS grid...")
+
+for d in (df_all, df_wind):
+    d["lat_center"] = d["lat_center"].round(3)
+    d["lon_center"] = d["lon_center"].round(3)
+
+df_merged = pd.merge(
+    df_all,
+    df_wind[["month_center", "lat_center", "lon_center", "u10", "v10", "wind_speed"]],
+    on=["month_center", "lat_center", "lon_center"],
+    how="left"
+)
+
+# ===============================================================
+# 5. Diagnostics
+# ===============================================================
+matched = df_merged["wind_speed"].notna().sum()
+total = len(df_merged)
+pct = 100 * matched / total if total > 0 else 0
+print(f"\nMatched {matched:,} of {total:,} FLOATS grid rows ({pct:.2f}%)")
+
+# ===============================================================
+# 6. Save output
+# ===============================================================
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+df_merged.to_csv(output_path, index=False)
+
+print("\nDone.")
+print(f"Final ERA5-wind merged dataset saved to: {output_path}")
+print(f"Final dataset size: {len(df_merged):,}")

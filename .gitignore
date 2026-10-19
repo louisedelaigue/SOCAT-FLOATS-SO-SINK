@@ -1,2 +1,26 @@
-*.csv
-*.shp
+# ---- Large input datasets (not tracked; see Data Availability Statement) ----
+data/ARMOR-3D/
+data/bathymetry/
+data/BGC-ARGO/
+data/GCB/
+data/PL/
+data/wind/
+data/ocean_mask/
+data/SOCATv2025.tsv
+data/SOCATv2025_SO.tsv
+data/SOCATv2025_SO_clean.csv
+
+# Catch-all for any other gridded/binary data under data/
+data/**/*.nc
+data/**/*.mat
+data/**/*.tsv
+
+# ---- Large intermediate / output tables ----
+MODEL_SOCAT_ONLY_OBS_v2/**/SOCATv2025_SO_clean_without_ind_expocodes.csv
+PREDICTION_MATRIX_v2/**/pco2_prediction_matrix_*.csv
+PREDICTION_MATRIX_v2/**/ARMOR3D_*.csv
+PREDICTION_MATRIX_v2/**/*monthly_1deg*.csv
+
+# ---- System / editor clutter ----
+.DS_Store
+.ipynb_checkpoints/
